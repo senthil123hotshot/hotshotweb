@@ -1,0 +1,156 @@
+<!doctype html>
+<!-- Declares meanMapApp as the starting Angular module -->
+<html class="no-js" ng-app="meanMapApp">
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <!-- Css -->
+    <link rel="stylesheet" href="css/core.min2.css" />
+    <link rel="stylesheet" href="css/skin.css" />
+  <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CRoboto:300,400,500,700' rel='stylesheet' type='text/css'>
+     <meta charset="UTF-8" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+    <meta name="twitter:widgets:theme" content="light">
+    <meta property="og:title" content="Hotshot Sports" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="Your-Image-Url" />
+    <meta property="og:description" content="At Hotshot, we change perceptions by building a sports ecosystem for the people." />
+    <title>Hotshot | Sports</title>
+    <link rel="shortcut icon" href="images/logoalt.png">
+    <!-- Google Maps API -->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrn605l7RPadiwdzsOlRw9O28lxfYBJ6s&callback=initMap"
+  type="text/javascript"></script>
+    <!-- Modernizr -->
+    <script src="../bower_components/modernizr/bin/modernizr"></script>
+    <!-- JS Source -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+    <!-- Angular Source -->
+    <script src="js/app.js"></script>
+    <script src="js/addCtrl.js"></script>
+    <script src="js/gservice.js"></script>
+    <script src="js/queryCtrl.js"></script>
+    <script src="js/groundCtrl.js"></script>
+</head>
+<!-- Removed ng-controller. Now this will be handled in app.js -->
+<body>
+
+<header class="header header-fixed header-transparent header-fixed-on-mobile">     
+                <div class="header-inner">
+                    <div class="row nav-bar">
+                        <div class="column width-12 nav-bar-inner">
+                            <div class="logo">
+
+                                <div class="logo-inner">
+                                 <a href="#home" class="scroll-link" ><img src="images/hotshotlogo.png" alt="logoalt.png" /></a>
+                                    
+                                      <a href="#home" class="scroll-link" ><img src="images/hotshotlogo.png" alt="logoalt.png" /></a>
+
+
+          
+                                </div>
+                            </div>
+                            <nav class="navigation nav-block secondary-navigation nav-right">
+                                <ul>
+
+                                    <li class="aux-navigation hide">
+                                        
+                                        <a href="#" class="navigation-show overlay-nav-show nav-icon">
+                                            <span class="icon-menu"></span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                            <nav class="navigation nav-block primary-navigation nav-right ">
+                                <ul>
+
+                             <li active><a href="/#/join">Add Ground</a></li>
+                            <li disabled><a href="/#/find">Search Ground</a></li>
+                            <a href="/#/groundlist">list</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+    <!-- Map and Side Panel -->
+    <div class="row content">
+        <!-- Google Map -->
+        <div >
+            <div id="map"></div>
+        </div>
+        <!-- Side Panel -- Now Handled by ng-view -->
+        <div ng-view></div>
+
+    <hr/>
+
+    <!-- Footer -->
+     <footer class="footer">
+                <div class="footer-top">
+                           
+                    <div class="footer-top-inner">
+                    <div class="row flex">
+                        <div class="column width-2">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="images/hotshotlogo.png" alt="Logo" /></a>
+                            </div>
+                        </div>
+                    </div>     
+                    </div>
+                  
+                    
+                    <div class="row flex">
+                        
+                        <div class="column width-4">
+                            <div class="widget">
+<!--                          <h4 class="widget-title">CIX Software Inc.</h4>-->
+                                
+                                <p>Hotshot is all about sports. We create your world around sports &amp; activities. Experience sports like never before through us.</p>
+                            </div>
+                        </div>  
+                        <div class="column width-4 offset-2 left">
+                            <div class="widget">
+                                <ul>
+
+                                    
+                                    <li>
+                                        <a href="contact.html">CONTACT</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="column width-2 left">
+                            <div class="widget">
+                                
+                                
+                                <h4 class="widget-title font-med">SOCIAL</h4>
+                                <ul class="social-list list-horizontal">
+                                    <li><a href="https://www.facebook.com/hotshotgo" target="_blank"><span class="icon-facebook color-grey-ultralight medium color-hover-linkedin"></span></a></li>
+                                    <li><a href="https://twitter.com/hotshotgo" target="_blank"><span class="icon-twitter color-grey-ultralight medium color-hover-twitter"></span></a></li>
+                                    <li><a href="https://www.instagram.com/hotshotgo/?hl=en" target="_blank"><span class="icon-instagram color-grey-ultralight medium color-hover-instagram"></span></a></li>
+                                    <li><a href="https://www.youtube.com/channel/UCKTeE68XDwqb29sL08QLoew" target="_blank"><span class="icon-youtube color-grey-ultralight medium color-hover-youtube"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="row">
+                        <div class="column width-12">
+                            <p class="copyright">
+                                <span class="pull-left">&copy; 2017 Hotshot Sports, LLP. All Rights Reserved.</span> 
+                                <span class="pull-right"><a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> </span><br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+</div>
+</body>
+</html>
