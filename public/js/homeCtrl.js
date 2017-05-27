@@ -1,6 +1,6 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' and 'gservice' modules and controllers.
-var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
-addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, gservice){
+var addCtrl = angular.module('homeCtrl', ['geolocation', 'gservice']);
+addCtrl.controller('homeCtrl', function($scope, $http, $rootScope, geolocation, gservice){
 
     // Initializes Variables
     // ----------------------------------------------------------------------------
@@ -10,8 +10,8 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
     var long = 0;
 
     // Set initial coordinates to the center of the US
-    $scope.formData.latitude ;
-    $scope.formData.longitude ;
+    $scope.formData.latitude;
+    $scope.formData.longitude;
 
     geolocation.getLocation().then(function(data){
 
@@ -24,7 +24,7 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
 
         // Display message confirming that the coordinates verified.
         $scope.formData.htmlverified = "Yep (Thanks for giving us real data!)";
-console.log(data);
+
         gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
 
     });
@@ -41,35 +41,4 @@ console.log(data);
             $scope.formData.htmlverified = "Nope (Thanks for spamming my map...)";
         });
     });
-
-    // Creates a new user based on the form fields
-    $scope.createUser = function() {
-
-        // Grabs all of the text box fields
-        var userData = {
-            groundname: $scope.formData.groundname,
-            groundtype: $scope.formData.groundtype,
-            contact: $scope.formData.contact,
-            favlang: $scope.formData.favlang,
-            location: [$scope.formData.longitude, $scope.formData.latitude],
-        };
-
-        // Saves the user data to the db
-        $http.post('/users', userData)
-            .success(function (data) {
-
-                // Once complete, clear the form (except location)
-                $scope.formData.groundname = "";
-                $scope.formData.groundtype = "";
-                $scope.formData.contact = "";
-                $scope.formData.favlang = "";
-
-                // Refresh the map with new data
-                gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-
-            })
-            .error(function (data) {
-                console.log('Error: ' + data);
-            });
-    };
 });

@@ -1,6 +1,20 @@
 // Dependencies
 var mongoose        = require('mongoose');
 var User            = require('./model.js');
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '123',
+  database : 'hotshot'
+});
+connection.connect(function(err){
+if(!err) {
+    console.log("Database is connected ... nn");    
+} else {
+    console.log("Error connecting database ... nn");    
+}
+});
 // Opens App Routes
 module.exports = function(app) {
 
@@ -124,5 +138,19 @@ app.post("/updateapi",function(req,res){
             else{res.send({message:"The data is updated"});
     }
         });
+});
+
+app.post("/login",function(req,res){
+    var username=req.body.name;
+    var password=req.body.password;
+    connection.query('select * from login where username= "'+username+'" and password="'+password+'"' ,function(err,result){
+    if(err){
+        res.send(err);
+    }
+    else{
+    //res.send("succesfully login");
+res.send({success:true,message:'login success'});
+}
+});
 });
 };

@@ -1,6 +1,6 @@
 // Creates the addCtrl Module and Controller. Note that it depends on 'geolocation' and 'gservice' modules.
 var queryCtrl = angular.module('queryCtrl', ['geolocation', 'gservice']);
-queryCtrl.controller('queryCtrl', function($scope, $log, $http, $rootScope, geolocation, gservice){
+queryCtrl.controller('queryCtrl', function($scope, $log, $http,$location, $rootScope, geolocation, gservice){
 
     // Initializes Variables
     // ----------------------------------------------------------------------------
@@ -59,6 +59,7 @@ queryCtrl.controller('queryCtrl', function($scope, $log, $http, $rootScope, geol
 
                 // Count the number of records retrieved for the panel-footer
                 $scope.queryCount = queryResults.length;
+
             })
             .error(function(queryResults){
                 console.log('Error ' + queryResults);

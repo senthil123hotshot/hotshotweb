@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+
 'use strict';
 
 var fs = require('fs');
@@ -100,7 +100,7 @@ if (argv.m) {
   });
   if (!argv.d) {
     // return early unless we explictly request Modernizr to be built
-    return;
+    return 0;
   }
 }
 
